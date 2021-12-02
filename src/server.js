@@ -4,15 +4,8 @@ const { app, path } = require("./plugins")
 require("dotenv").config()
 
 //register npm modules/plugins
-app.register(require("fastify-helmet"),  { 
-    contentSecurityPolicy: false
-    // {
-    //   directives: {
-    //     defaultSrc: ["'self'"],
-    //     scriptSrc: ["'self'", "https://www.google.com/recaptcha/api.js?render=6LfWRMQbAAAAAG0QCV3Blkn1lFuPB64l-zjYnRmU"],
-    //   }
-    // }
-  })
+app.register(require("fastify-helmet"))
+
 // app.register(require("fastify-multipart"))
 app.register(require("fastify-cors"), {
     origin:
