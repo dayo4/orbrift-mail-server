@@ -1,0 +1,33 @@
+{
+  "name": "rift",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "pm2 start src/server.js",
+    "restart": "pm2 restart src/server.js",
+    "stop": "pm2 restart src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dayo4/rift.git"
+  },
+  "author": "Adedayo Adeniyi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dayo4/rift/issues"
+  },
+  "homepage": "https://github.com/dayo4/rift#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "fastify": "^3.24.1",
+    "fastify-cors": "^6.0.2",
+    "fastify-helmet": "^5.3.2",
+    "fastify-static": "^4.5.0",
+    "node-fetch": "^2.6.1",
+    "nodemailer": "^6.7.2",
+    "sanitize-html": "^2.6.0"
+  }
+}

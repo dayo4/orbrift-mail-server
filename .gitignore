@@ -1,0 +1,14 @@
+node_modules
+mysql
+.env
+'udo systemctl status mariadb'
+# !src/public/
+# src/public/*
+# !src/uploads/images/users
+src/uploads/images/users/*
+src/uploads/images/
+!1.jpg
+
+src/uploads/images/posts/*
+!src/uploads/images/posts
+# seeds
