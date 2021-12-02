@@ -4,7 +4,19 @@ const { app, path } = require("./plugins")
 require("dotenv").config()
 
 //register npm modules/plugins
-app.register(require("fastify-helmet"))
+app.register(require("fastify-helmet"),  { 
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: [
+          function (req, res) {
+            // "res" here is actually "reply.raw" in fastify
+            res.scriptNonce = crypto.randomBytes(16).toString('hex')
+          }
+        ],
+      }
+    }
+  })
 // app.register(require("fastify-multipart"))
 app.register(require("fastify-cors"), {
     origin:
