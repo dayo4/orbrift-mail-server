@@ -10,7 +10,7 @@ app.register(require("fastify-cors"), {
     origin:
         process.env.NODE_ENV === "development"
             ? ["http://localhost:8080", "http://localhost:8081", "http://127.0.0.1:8080", "http://localhost:4000"]
-            : ["https://www.orbrift.com", "https://orbrift.com"],
+            :"" /* ["https://www.orbrift.com", "https://orbrift.com"] */,
 })
 
 //register global app hooks and plugins
