@@ -6,7 +6,7 @@
   "scripts": {
     "start": "pm2 start src/server.js",
     "restart": "pm2 restart src/server.js",
-    "stop": "pm2 restart src/server.js",
+    "stop": "pm2 stop src/server.js",
     "dev": "nodemon src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
