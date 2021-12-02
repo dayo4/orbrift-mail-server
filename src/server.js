@@ -7,7 +7,7 @@ require("dotenv").config()
 app.register(require("fastify-helmet"),  { 
     contentSecurityPolicy: {
       directives: {
-        // defaultSrc: ["'self'"],
+        defaultSrc: ["'self'"],
         scriptSrc: ["'self'", "https://www.google.com/recaptcha/api.js?render=6LfWRMQbAAAAAG0QCV3Blkn1lFuPB64l-zjYnRmU"],
       }
     }
