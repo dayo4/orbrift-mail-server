@@ -1,4 +1,30 @@
 const { app, path } = require("./plugins")
+// const fastify = require('fastify')()
+const fastifyCaching = require('fastify-caching')
+
+// const IORedis = require('ioredis')
+// const redis = new IORedis({host: '127.0.0.1', port: 6380})
+// const abcache = require('abstract-cache')({
+//   useAwait: false,
+//   driver: {
+//     name: 'abstract-cache-redis', // must be installed via `npm install`
+//     options: {client: redis}
+//   }
+// })
+// app
+//   .register(require('fastify-caching'), {cache: abcache})
+//   .register(require('fastify-redis'), {client: redis})
+
+app.register(
+  fastifyCaching,
+//   {
+//     expiresIn: 300,
+// serverExpiresIn:400
+//     // privacy: fastifyCaching.privacy.NOCACHE
+// },
+// //   (err) => { if (err) throw err }
+)
+
 
 //environment variables
 require("dotenv").config()
@@ -37,7 +63,9 @@ const start = async () => {
     try {
         // await app.listen(process.env.PORT, process.env.NODE_ENV === 'production' ? '0.0.0.0' : '127.0.0.1')
         await app.listen(process.env.PORT, process.env.HOST).then(() => {
-
+            // http.get('http://127.0.0.1:3000/', (res) => {
+            //     console.log(res.headers['cache-control'])
+            //   })
         })
         // app.log.info(`server listening on ${ app.server.address().port }`)
     } catch (err) {

@@ -23,11 +23,17 @@
   },
   "homepage": "https://github.com/dayo4/rift#readme",
   "dependencies": {
+    "abstract-cache": "^1.0.1",
+    "abstract-cache-redis": "^2.0.0",
     "dotenv": "^10.0.0",
     "fastify": "^3.24.1",
+    "fastify-caching": "^6.2.0",
     "fastify-cors": "^6.0.2",
     "fastify-helmet": "^5.3.2",
+    "fastify-redis": "^4.3.3",
     "fastify-static": "^4.5.0",
+    "fs-extra": "^10.0.0",
+    "ioredis": "^4.28.2",
     "node-fetch": "^2.6.1",
     "nodemailer": "^6.7.2",
     "sanitize-html": "^2.6.0"

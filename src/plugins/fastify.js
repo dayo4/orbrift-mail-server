@@ -1,7 +1,7 @@
 
 /* The fastify framework */
 const app = require('fastify')({
-    logger: true
+    logger: true,
     // logger:
     // {
     //     // level: 'error',
