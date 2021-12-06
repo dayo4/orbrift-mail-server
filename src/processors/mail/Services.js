@@ -45,22 +45,21 @@ module.exports = {
                         return 'Your Message has been sent! Thank you.'
                     }
                     else
-                        hlp.error(captchaData+'  ' + sent , 400);
-                        // hlp.error('Unable to send mail due to mail service connection error. ' + other + sent , 400);
+                        hlp.error('Unable to send mail due to mail service connection error. ' + other, 500);
                     // console.log('failed')
                 }
                 else if (captchaData.score <= 0.3) {
-                    hlp.error('Sorry! I was unable to verify that you are human. Your message was not sent. ' + other, 400);
+                     hlp.error('Sorry! I was unable to verify that you are human. Your message was not sent. ' + other, 400);
                 }
                 else {
-                    hlp.error('Sorry! Authenticity verification failed. Your message was not sent. ' + other, 400);
+                     hlp.error('Sorry! Authenticity verification failed. Your message was not sent. ' + other, 400);
                 }
             }
 
 
         }
         catch (e) {
-            hlp.error(/* 'Unable to send mail due to mail service connection error, Please use other medium above or try again soon.' */+ e, 400)
+            hlp.error('Unable to send mail due to mail service connection error, Please use other medium above or try again soon.', 500)
         }
     },
 
@@ -116,7 +115,7 @@ module.exports = {
                         return 'Your Message has been sent! Thank you.'
                     }
                     else
-                        hlp.error('Unable to send mail due to mail service connection error. ' + other, 400);
+                        hlp.error('Unable to send mail due to mail service connection error. ' + other, 500);
                     // console.log('failed')
                 }
                 else if (captchaData.score <= 0.3) {
@@ -130,7 +129,7 @@ module.exports = {
 
         }
         catch (e) {
-            hlp.error('Unable to send mail due to mail service connection error, Please use other medium above or try again soon.', 400)
+            hlp.error('Unable to send mail due to mail service connection error, Please use other medium above or try again soon.', 500)
         }
     }
 
