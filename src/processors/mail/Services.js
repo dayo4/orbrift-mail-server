@@ -45,7 +45,8 @@ module.exports = {
                         return 'Your Message has been sent! Thank you.'
                     }
                     else
-                        hlp.error('Unable to send mail due to mail service connection error. ' + other + sent , 400);
+                        hlp.error(captchaData+'  ' + sent , 400);
+                        // hlp.error('Unable to send mail due to mail service connection error. ' + other + sent , 400);
                     // console.log('failed')
                 }
                 else if (captchaData.score <= 0.3) {
@@ -59,7 +60,7 @@ module.exports = {
 
         }
         catch (e) {
-            hlp.error('Unable to send mail due to mail service connection error, Please use other medium above or try again soon.'+ e, 400)
+            hlp.error(/* 'Unable to send mail due to mail service connection error, Please use other medium above or try again soon.' */+ e, 400)
         }
     },
 
