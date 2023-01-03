@@ -1,7 +1,6 @@
 {
-  "name": "rift",
+  "name": "orbrift-mail-server",
   "version": "1.0.0",
-  "description": "",
   "main": "src/server.js",
   "scripts": {
     "start": "pm2 start src/server.js",
@@ -14,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dayo4/rift.git"
+    "url": "git+https://github.com/dayo4/orbrift-mail-server.git"
   },
   "author": "Adedayo Adeniyi",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dayo4/rift/issues"
+    "url": "https://github.com/dayo4/orbrift-mail-server/issues"
   },
-  "homepage": "https://github.com/dayo4/rift#readme",
+  "homepage": "https://github.com/dayo4/orbrift-mail-server#readme",
   "dependencies": {
     "dotenv": "^10.0.0",
     "fastify": "^3.24.1",
@@ -33,5 +32,7 @@
     "node-fetch": "^2.6.1",
     "nodemailer": "^6.7.2",
     "sanitize-html": "^2.6.0"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
