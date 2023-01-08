@@ -10,7 +10,7 @@ const transport = nodeMailer.createTransport({
     secure: 'true',
     auth: {
         type: 'OAUTH2',
-        user: 'dayorx68@gmail.com',
+        user: process.env.MAILER_USER_EMAIL,
         clientId: process.env.MAILER_CLIENT_ID,
         clientSecret: process.env.MAILER_CLIENT_SECRET,
         refreshToken: process.env.MAILER_REFRESH_TOKEN
@@ -21,15 +21,14 @@ module.exports = {
     async send(req, res) {
         const email = req.body.email
         const name = sanitizeHTML(req.body.name)
-        const subject = sanitizeHTML(req.body.subject)
         const message = sanitizeHTML(req.body.message)
         const token = req.body.token
 
         try {
             const mailOptions = {
                 from: `${name} ${email}`,
-                to: /* target === 'app' ? 'next@orbrift.com' :  */'dayo4@live.com',
-                subject: subject,
+                to: /* target === 'app' ? 'next@orbrift.com' :  */ process.env.RECIPIENT_EMAIL,
+                subject: 'Message to orbrift',
                 html: `
                 <p>An email sent from orbrift's contact form  by - <b>${name} - ${email}</b></p>.
                 <hr>
@@ -66,11 +65,6 @@ module.exports = {
     async sendProjectEnq(req, res) {
         const email = req.body.email
         const name = sanitizeHTML(req.body.name)
-        const site_status = sanitizeHTML(req.body.site_status)
-        const purpose = sanitizeHTML(req.body.purpose)
-        const type = sanitizeHTML(req.body.type)
-        const template = sanitizeHTML(req.body.template)
-        const logo = sanitizeHTML(req.body.logo)
         const description = sanitizeHTML(req.body.description)
         const features = sanitizeHTML(req.body.features)
         const budget = sanitizeHTML(req.body.budget)
@@ -80,20 +74,10 @@ module.exports = {
         try {
             const mailOptions = {
                 from: `${name} ${email}`,
-                to: /* 'next@orbrift.com' */ 'dayo4@live.com',
+                to: process.env.RECIPIENT_EMAIL,
                 subject: 'Project Enquiry',
                 html: `
                 <p>A Project Enquiry sent by - <b>${name} - ${email}</b></p>.
-                <hr>
-                <b>Site Status: </b>${site_status}
-                <hr>
-                <b>Purpose: </b>${purpose}
-                <hr>
-                <b>Type: </b>${type}
-                <hr>
-                <b>Has Existing Template: </b>${template}
-                <hr>
-                <b>Need New Logo: </b>${logo}
                 <hr>
                 <b>Business Description: </b>${description}
                 <hr>
