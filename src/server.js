@@ -34,7 +34,7 @@ app.register(require("./processors"))
 
 //Start the server
 const start = async () => {
-    console.log()
+    console.log("running")
     try {
         await app.listen(process.env.PORT, process.env.HOST).then(() => {
             // http.get('http://127.0.0.1:3000/', (res) => {
