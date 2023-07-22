@@ -1,6 +1,6 @@
 {
   "name": "orbrift-mail-server",
-  "version": "3.0.0",
+  "version": "3.0-vercel",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
