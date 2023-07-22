@@ -11,7 +11,7 @@ const apiRoutes = async (app, options) => {
 	})
 
 	app.get('/dd', async (req, reply) => {
-	    await reply.
+	    await reply.sendFile('index.html')
 	})
 
 	// app.get('*', async (req, reply) => {
