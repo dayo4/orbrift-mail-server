@@ -12,3 +12,4 @@ src/uploads/images/
 src/uploads/images/posts/*
 !src/uploads/images/posts
 # seeds
+.vercel
