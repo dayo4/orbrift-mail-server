@@ -1,4 +1,4 @@
-const { app, path } = require("./plugins")
+const { app, path } = require("./src/plugins")
 
 
 //environment variables
@@ -29,7 +29,7 @@ app.register(require("fastify-static"), {
 
 
 //Import all the app's processed Api route functions
-app.register(require("./processors"))
+app.register(require("./src/processors"))
 
 
 //Start the server
