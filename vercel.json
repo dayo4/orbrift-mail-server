@@ -6,7 +6,7 @@
       {
         "source": "/api/(.*)",
         "headers": [
-          { "key": "Access-Control-Allow-Origin", "value": "https://orbrift.com" }
+          { "key": "Access-Control-Allow-Origin", "value": "*" }
         ]
       }
     ]

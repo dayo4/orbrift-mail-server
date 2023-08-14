@@ -1,6 +1,6 @@
 require('dotenv').config()
 const nodeMailer = require('nodemailer')
-const { hlp, reCaptcha, sanitizeHTML } = require('../plugins')
+const { hlp, reCaptcha, sanitizeHTML } = require('../../plugins')
 
 const transport = nodeMailer.createTransport({
     //@ts-ignore
