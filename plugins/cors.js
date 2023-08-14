@@ -1,6 +1,6 @@
 const corsHandler = (handler) => async (req, res) => {
   res.setHeader("Access-Control-Allow-Credentials", true);
-  res.setHeader("Access-Control-Allow-Origin", "https://orbrift.com/");
+  res.setHeader("Access-Control-Allow-Origin", "https://orbrift.com");
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET,OPTIONS,PATCH,DELETE,POST,PUT"
