@@ -1,4 +1,3 @@
-const app = require('./fastify')
 
 const mailErrorMsg = 'Sorry! Encountered mail service connection error. Please try again later'
 module.exports = {
@@ -12,7 +11,6 @@ module.exports = {
                 err.statusCode = code
             else
                 err.statusCode = error.statusCode
-            app.log.error(err)
             throw err
         }
         else
@@ -25,7 +23,6 @@ module.exports = {
             if (code)
                 err.statusCode = code
 
-            app.log.error(err)
             throw err
         }
 
