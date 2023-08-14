@@ -3,6 +3,11 @@
       { "src": "./index.js", "use": "@vercel/node" }
     ],
     "headers": [
-      { "key": "Access-Control-Allow-Origin", "value": "https://orbrift.com" }
+      {
+        "source": "/api/(.*)",
+        "headers": [
+          { "key": "Access-Control-Allow-Origin", "value": "https://orbrift.com" },
+        ]
+      }
     ]
   }
