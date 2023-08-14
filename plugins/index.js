@@ -6,7 +6,6 @@ const path = require("path")
 const fsx = require("fs-extra")
 
 //some utils functions
-const hlp = require("./helpers")
 const corsHandler = require("./cors")
 
 module.exports = {
@@ -15,6 +14,5 @@ module.exports = {
     fsx,
     path,
     //
-    hlp,
     corsHandler
 }
