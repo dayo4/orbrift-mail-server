@@ -17,27 +17,36 @@ const transport = nodeMailer.createTransport({
   },
 });
 
-const sendMail = async (req, res) => {
+const sendProjectEnq = async (req, res) => {
   const email = req.body.email;
   const name = sanitizeHTML(req.body.name);
-  const message = sanitizeHTML(req.body.message);
+  const description = sanitizeHTML(req.body.description);
+  const features = sanitizeHTML(req.body.features);
+  const budget = sanitizeHTML(req.body.budget);
   const token = req.body.token;
 
   try {
     const mailOptions = {
       from: `${name} ${email}`,
-      to: /* target === 'app' ? 'next@orbrift.com' :  */ process.env
-        .RECIPIENT_EMAIL,
-      subject: "Message to orbrift",
+      to: process.env.RECIPIENT_EMAIL,
+      subject: "Project Enquiry",
       html: `
-            <p>An email sent from orbrift's contact form  by - <b>${name} - ${email}</b></p>.
-            <hr>
-            ${message}
-            `,
+        <p>A Project Enquiry sent by - <b>${name} - ${email}</b></p>.
+        <hr>
+        <b>Business Description: </b>${description}
+        <hr>
+        <b>Required Website Features: </b>${features}
+        <hr>
+        <b>Budget: </b>${budget}
+        <hr>
+    `,
     };
+
     const captchaData = await reCaptcha.verifyCaptchaToken(token);
 
     if (captchaData) {
+      const other = "Please use other medium above or try again soon.";
+
       if (
         (captchaData.success === true &&
           captchaData.score >= 0.4 &&
@@ -46,7 +55,7 @@ const sendMail = async (req, res) => {
       ) {
         const sent = await transport.sendMail(mailOptions);
         if (sent) {
-          return res.status(200).send("Your Message has been sent! Thank you.");
+          return res.status(200).send("Your Message has been sent!");
         } else
           return res
             .status(500)
@@ -57,14 +66,14 @@ const sendMail = async (req, res) => {
         // console.log('failed')
       } else if (captchaData.score <= 0.3) {
         return res
-          .status(500)
+          .status(400)
           .send(
             "Sorry! I was unable to verify that you are human. Your message was not sent. " +
               other
           );
       } else {
         return res
-          .status(500)
+          .status(400)
           .send(
             "Sorry! Authenticity verification failed. Your message was not sent. " +
               other
@@ -80,4 +89,4 @@ const sendMail = async (req, res) => {
   }
 };
 
-export default corsHandler(sendMail);
+export default corsHandler(sendProjectEnq);

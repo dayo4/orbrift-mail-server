@@ -57,14 +57,14 @@ const sendMail = async (req, res) => {
         // console.log('failed')
       } else if (captchaData.score <= 0.3) {
         return res
-          .status(500)
+          .status(400)
           .send(
             "Sorry! I was unable to verify that you are human. Your message was not sent. " +
               other
           );
       } else {
         return res
-          .status(500)
+          .status(400)
           .send(
             "Sorry! Authenticity verification failed. Your message was not sent. " +
               other
