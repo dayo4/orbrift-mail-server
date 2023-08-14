@@ -7,6 +7,7 @@ const fsx = require("fs-extra")
 
 //some utils functions
 const hlp = require("./helpers")
+const corsHandler = require("./cors")
 
 module.exports = {
     reCaptcha,
@@ -15,4 +16,5 @@ module.exports = {
     path,
     //
     hlp,
+    corsHandler
 }
