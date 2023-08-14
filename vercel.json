@@ -2,7 +2,7 @@
     "headers": [
       {
 
-        "source": "/api/rift-v1(.*)",
+        "source": "/api/rift-v1/(.*)",
         "headers": [
           { "key": "Access-Control-Allow-Origin", "value": "*" },
           { "key": "Access-Control-Allow-Methods", "value": "OPTIONS,POST" }
