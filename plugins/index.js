@@ -6,7 +6,7 @@ const path = require("path")
 const fsx = require("fs-extra")
 
 //some utils functions
-const corsHandler = require("./cors")
+const corsHandler = require("./cors").corsHandler
 
 module.exports = {
     reCaptcha,
