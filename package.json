@@ -28,6 +28,8 @@
     "nodemailer": "^6.7.2",
     "sanitize-html": "^2.6.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@vercel/node": "^2.15.9"
+  },
   "description": ""
 }

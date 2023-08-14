@@ -40,7 +40,7 @@ export default async function sendMail(req, res) {
             if (captchaData.success === true && captchaData.score >= 0.4 && captchaData.action === 'contactForm' || 'messageOwner') {
                 const sent = await transport.sendMail(mailOptions)
                 if (sent) {
-                    res.status(200).send('Your Message has been sent! Thank you.');
+                    return res.status(200).send('Your Message has been sent! Thank you.');
                     // res.statusCode = 200;                  
                     // res.send('Your Message has been sent! Thank you.');
                 }
