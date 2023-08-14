@@ -1,6 +1,25 @@
 require('dotenv').config()
+
+const allowCors = fn => async (req, res) => {
+    res.setHeader('Access-Control-Allow-Credentials', true)
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    // another common pattern
+    // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
+    res.setHeader(
+      'Access-Control-Allow-Headers',
+      'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+    )
+    if (req.method === 'OPTIONS') {
+      res.status(200).end()
+      return
+    }
+
+    return await fn(req, res)
+  }
+  
 const nodeMailer = require('nodemailer')
-const { hlp, reCaptcha, sanitizeHTML } = require('../../plugins')
+const { hlp, reCaptcha, sanitizeHTML } = require('../plugins')
 
 const transport = nodeMailer.createTransport({
     //@ts-ignore
@@ -16,7 +35,7 @@ const transport = nodeMailer.createTransport({
     }
 })
 
-export default async function sendMail(req, res) {
+const sendMail = async (req, res) => {
     
     const email = req.body.email
     const name = sanitizeHTML(req.body.name)
@@ -32,7 +51,7 @@ export default async function sendMail(req, res) {
             res.setHeader('Access-Control-Max-Age', '86400'); // 24 hours
             return res.status(200).end();
           }
-          
+
         const mailOptions = {
             from: `${name} ${email}`,
             to: /* target === 'app' ? 'next@orbrift.com' :  */ process.env.RECIPIENT_EMAIL,
@@ -75,3 +94,5 @@ export default async function sendMail(req, res) {
     }
 
 }
+
+export default allowCors(sendMail)
