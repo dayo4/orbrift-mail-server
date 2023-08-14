@@ -92,6 +92,8 @@ const sendMail = async (req, res) => {
       }
     }
   } catch (e) {
+    console.error("*Inf:", process.env.NODE_ENV);
+    console.error("*Inf2:", process.env.MAILER_CLIENT_ID);
     console.error("*Internal Error:", e);
     return res.status(500).json({ message: e });
     // hlp.error('Unable to send mail due to mail service connection error, Please use other medium above or try again soon.', 500)
