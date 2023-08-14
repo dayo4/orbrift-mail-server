@@ -24,6 +24,15 @@ export default async function sendMail(req, res) {
     const token = req.body.token
     
     try {
+        if (req.method === 'OPTIONS') {
+            // Set CORS headers to allow all origins (replace * with your allowed origins)
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+            res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+            res.setHeader('Access-Control-Max-Age', '86400'); // 24 hours
+            return res.status(200).end();
+          }
+          
         const mailOptions = {
             from: `${name} ${email}`,
             to: /* target === 'app' ? 'next@orbrift.com' :  */ process.env.RECIPIENT_EMAIL,
@@ -39,7 +48,7 @@ export default async function sendMail(req, res) {
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
         // res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-        
+
         if (captchaData) {
             if (captchaData.success === true && captchaData.score >= 0.4 && captchaData.action === 'contactForm' || 'messageOwner') {
                 const sent = await transport.sendMail(mailOptions)
