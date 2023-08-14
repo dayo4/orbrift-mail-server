@@ -17,15 +17,12 @@ const transport = nodeMailer.createTransport({
 })
 
 export default async function sendMail(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    // res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
+    
     const email = req.body.email
     const name = sanitizeHTML(req.body.name)
     const message = sanitizeHTML(req.body.message)
     const token = req.body.token
-
+    
     try {
         const mailOptions = {
             from: `${name} ${email}`,
@@ -35,10 +32,14 @@ export default async function sendMail(req, res) {
             <p>An email sent from orbrift's contact form  by - <b>${name} - ${email}</b></p>.
             <hr>
             ${message}
-        `
+            `
         }
         const captchaData = await reCaptcha.verifyCaptchaToken(token)
-
+        
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+        // res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+        
         if (captchaData) {
             if (captchaData.success === true && captchaData.score >= 0.4 && captchaData.action === 'contactForm' || 'messageOwner') {
                 const sent = await transport.sendMail(mailOptions)
