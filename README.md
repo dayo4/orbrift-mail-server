@@ -34,14 +34,16 @@ Follow these steps to it set up on your local machine:
 3. Install dependencies:
 
    ```bash
-   npm install
+   npm install 
    ```
 
-4. Start the development server: (Uses "Nodemon" package globally installed for the development)
-   
+4. Start the local development server: 
+
+   If using vercel, install vercel globally
    ```bash
-   npm run dev
+   npm i -g vercel
    ```
+   Then login to vercel... You can visit vercel website or other serverless hosting of your choice to learn its local dev processes.
 
 5. Deploy to Vercel or your favorite serveless architecture..
 
