@@ -4,7 +4,6 @@ const nodeMailer = require("nodemailer");
 const { corsHandler, reCaptcha, sanitizeHTML } = require("../plugins");
 
 const transport = nodeMailer.createTransport({
-  //@ts-ignore
   host: "smtp.gmail.com",
   port: "465",
   secure: "true",
