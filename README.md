@@ -16,7 +16,6 @@ A set of mailing endpoints for managing mails from different frontend contact fo
 ## About
 This was basically used to manage mails and project enquiries from my website. It was extracted from my full-fledged nodejs backend just to include only relevent mailing endpoints hosted with Vercel serverless features.
 
-
 ### Prerequisites
 
 Before you get started, make sure you have the following prerequisites:
